@@ -14,7 +14,7 @@ let batchedIdQuery = (() => {
 
     let totalFetched = 0;
 
-    const allPendingResponses = batches.flatMap(function (idBatch) {
+    const allPendingResponses = batches.map(function (idBatch) {
       return requestQueue.add(_asyncToGenerator(function* () {
         const response = yield environment[method]({
           'sys.id[in]': idBatch,
@@ -28,8 +28,8 @@ let batchedIdQuery = (() => {
     });
 
     const responses = yield _bluebird2.default.all(allPendingResponses);
-    console.log('response -->', responses);
-    return responses;
+    console.log('response -->', (0, _flatMapDeep2.default)(responses));
+    return (0, _flatMapDeep2.default)(responses);
   });
 
   return function batchedIdQuery(_x) {
@@ -40,6 +40,10 @@ let batchedIdQuery = (() => {
 var _bluebird = require('bluebird');
 
 var _bluebird2 = _interopRequireDefault(_bluebird);
+
+var _flatMapDeep = require('lodash/flatMapDeep');
+
+var _flatMapDeep2 = _interopRequireDefault(_flatMapDeep);
 
 var _logging = require('contentful-batch-libs/dist/logging');
 
