@@ -28,7 +28,6 @@ let batchedIdQuery = (() => {
     });
 
     const responses = yield _bluebird2.default.all(allPendingResponses);
-    console.log('response -->', (0, _flatMapDeep2.default)(responses));
     return (0, _flatMapDeep2.default)(responses);
   });
 
