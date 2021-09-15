@@ -28,8 +28,8 @@ let batchedIdQuery = (() => {
     });
 
     const responses = yield _bluebird2.default.all(allPendingResponses);
-
-    return responses ? responses.flat() : [];
+    console.log('response -->', responses);
+    return responses;
   });
 
   return function batchedIdQuery(_x) {
