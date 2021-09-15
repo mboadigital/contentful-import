@@ -14,7 +14,7 @@ let batchedIdQuery = (() => {
 
     let totalFetched = 0;
 
-    const allPendingResponses = batches.map(function (idBatch) {
+    const allPendingResponses = batches.flatMap(function (idBatch) {
       return requestQueue.add(_asyncToGenerator(function* () {
         const response = yield environment[method]({
           'sys.id[in]': idBatch,
