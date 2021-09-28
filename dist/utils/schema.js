@@ -40,7 +40,7 @@ const assetSchema = {
   sys: _joi2.default.object(),
   fields: _joi2.default.object({
     file: _joi2.default.object().pattern(/.+/, _joi2.default.object({
-      url: _joi2.default.string().required(),
+      url: _joi2.default.string(), // to be required
       details: _joi2.default.object({
         size: _joi2.default.number(),
         image: _joi2.default.object({
