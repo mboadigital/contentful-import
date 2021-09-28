@@ -123,7 +123,8 @@ function getFileFromAWS(s3Client, url, bucketName, path, toJson) {
         const json = buffer ? JSON.parse(buffer) : null;
         resolve(json);
       }
-      resolve(data.Body);
+      const result = data ? data.Body : null;
+      resolve(result);
     });
   });
 }
