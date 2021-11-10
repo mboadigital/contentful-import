@@ -87,6 +87,7 @@ exports.default = (() => {
     // Setup AWS S3 client
     const bucket = options.awsBucket;
     const dataDir = `${options.environmentId}/${options.folderName}`;
+    const targetEnv = options.targetEnv || options.environmentId;
 
     _awsSdk2.default.config.update({
       accessKeyId: options.awsAccessKey,
@@ -155,7 +156,7 @@ exports.default = (() => {
           const destinationData = yield (0, _getDestinationData2.default)({
             client: ctx.client,
             spaceId: options.spaceId,
-            environmentId: options.environmentId,
+            environmentId: targetEnv,
             sourceData: options.content,
             skipLocales: options.skipLocales,
             skipContentModel: options.skipContentModel,
@@ -191,7 +192,7 @@ exports.default = (() => {
           destinationData: ctx.destinationData,
           client: ctx.client,
           spaceId: options.spaceId,
-          environmentId: options.environmentId,
+          environmentId: targetEnv,
           contentModelOnly: options.contentModelOnly,
           skipLocales: options.skipLocales,
           skipContentModel: options.skipContentModel,
